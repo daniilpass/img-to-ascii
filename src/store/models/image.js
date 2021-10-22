@@ -1,6 +1,7 @@
 import { 
     createImageFromObjectUrl, 
-    getImageDataFromImage
+    getImageDataFromImage,
+    quantizeImageData
 } from "../../utils";
 
 export const image = {
@@ -14,8 +15,11 @@ export const image = {
             objectUrl: null,            
         },
         settings: {
-            maxWidth: 100,
-            maxHeight: 100,
+            maxWidth: 256,
+            maxHeight: 256,
+            redColorsCount: 8,
+            greenColorsCount: 8,
+            blueColorsCount: 4,
         }
     },
     reducers: {
@@ -47,7 +51,20 @@ export const image = {
         async processUserImage(payload, rootState) {   
             let image = rootState.image.original.image;
             let settings = rootState.image.settings;
-            let data = getImageDataFromImage(image, settings.maxWidth, settings.maxHeight);
+
+            let data = getImageDataFromImage(
+                image, 
+                settings.maxWidth, 
+                settings.maxHeight, 
+                [
+                    (imageData) => quantizeImageData(
+                        imageData, 
+                        settings.redColorsCount, 
+                        settings.greenColorsCount, 
+                        settings.blueColorsCount
+                    )                        
+                ]
+            );
 
             let payloadCopy = {
                 imageData: data.imageData,
