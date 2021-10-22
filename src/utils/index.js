@@ -1,11 +1,14 @@
 import { 
     createImageFromObjectUrl,
-    getImageDataFromImage,
-    quantizeImageData
+    getImageDataFromImage
 } from "./imageData";
+
+import { imageToAscii } from "./imageToAscii";
+import { quantizeImageData } from "./quantizeImageData";
 
 export { 
     createImageFromObjectUrl,
     getImageDataFromImage,
-    quantizeImageData
+    quantizeImageData,
+    imageToAscii
 };

@@ -6,9 +6,12 @@ import FileSelect from "../../molecules/FileSelect";
 import NoPhoto from "../../../assets/images/no-photo.png";
 
 import "./Main.css";
+import { imageToAscii } from "../../../utils";
+
 export function Main(props) {
     const dispatch = useDispatch();
     const userImage = useSelector(state => state.image);
+    const asciiImage = useSelector(state => state.text);
 
     const handleFileChange = (e) => {
         let file = e.target.files[0];
@@ -23,8 +26,12 @@ export function Main(props) {
     }
 
     useEffect(() => {
-        console.log("Loaded user image", userImage.original);
-    }, [userImage.original]);
+        if (!userImage.copy.imageData)
+            return;
+
+        let text = imageToAscii(userImage.copy.imageData);
+        dispatch.text.setText(text);
+    }, [userImage.copy]);
 
     return (
         <div>
@@ -34,13 +41,16 @@ export function Main(props) {
                 onChange={handleFileChange}
                 accept="image/jpg, image/jpeg, image/png" 
             />
-            {
-                <Image alt="original" src={userImage.original.objectUrl} fallback={NoPhoto} />
-            }
-            {
-                <Image alt="original" src={userImage.copy.objectUrl} fallback={NoPhoto} rendering="pixelated"/>
-            }
+            <br />
+
+            <Image alt="original" src={userImage.original.objectUrl} fallback={NoPhoto} />
+            <Image alt="original" src={userImage.copy.objectUrl} fallback={NoPhoto} rendering="pixelated"/>
             
+            <div 
+                className="ascii-art"
+                dangerouslySetInnerHTML={{__html: asciiImage.html}}
+            ></div>
+            {/* <textarea defaultValue={asciiImage}></textarea> */}
         </div>
     )
 }

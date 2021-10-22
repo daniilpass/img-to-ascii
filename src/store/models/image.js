@@ -17,8 +17,8 @@ export const image = {
         settings: {
             maxWidth: 256,
             maxHeight: 256,
-            redColorsCount: 8,
-            greenColorsCount: 8,
+            redColorsCount: 4,
+            greenColorsCount: 4,
             blueColorsCount: 4,
         }
     },

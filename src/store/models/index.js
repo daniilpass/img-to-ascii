@@ -1,2 +1,6 @@
 import { image } from "./image";
-export { image };
+import { text } from "./text";
+export { 
+    image,
+    text
+ };
