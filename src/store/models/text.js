@@ -5,10 +5,18 @@ export const text = {
     },
     reducers: {
         setText: (state, payload) => {
+            let raw = payload || "";
+            let html = raw
+                .replaceAll("&","&amp;")
+                .replaceAll('"',"&quot;")                
+                .replaceAll(" ","&nbsp;")
+                .replaceAll("<","&lt;")
+                .replaceAll(">","&gt;")                
+                .replaceAll("\n","<br/>");
             return {
                 ...state,
-                raw: payload && payload,
-                html: payload && payload.replaceAll("\n","<br/>").replaceAll(" ","&nbsp;")
+                raw: raw,
+                html: html
             };
         }
     }

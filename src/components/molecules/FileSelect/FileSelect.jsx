@@ -12,16 +12,16 @@ export function FileSelect({buttonTitle, onChange, accept}){
     }
 
     return (
-        <label 
-            className="file-select"
-            onClick={hanldeLabelClick}
-        >
-            <Input 
-                type="file"
-                onChange={onChange}
-                accept={accept}
-            />
-            <Button title={buttonTitle} />
-        </label>
+        <div className="file-select">
+            <label onClick={hanldeLabelClick}>
+                <Input 
+                    type="file"
+                    onChange={onChange}
+                    accept={accept}
+                />
+                <Button title={buttonTitle} />
+            </label>
+        </div>
+        
     )
 }
