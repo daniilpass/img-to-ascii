@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import Image from "../../atoms/Image";
 import FileSelect from "../../molecules/FileSelect";
+import NoPhoto from "../../../assets/images/no-photo.png";
 
 import "./Main.css";
 export function Main(props) {
@@ -33,14 +35,10 @@ export function Main(props) {
                 accept="image/jpg, image/jpeg, image/png" 
             />
             {
-                userImage.original.objectUrl
-                ? <img alt="original" src={userImage.original.objectUrl}></img>
-                : <></>
+                <Image alt="original" src={userImage.original.objectUrl} fallback={NoPhoto} />
             }
             {
-                userImage.copy.objectUrl
-                ? <img alt="original" src={userImage.copy.objectUrl}></img>
-                : <></>
+                <Image alt="original" src={userImage.copy.objectUrl} fallback={NoPhoto} rendering="pixelated"/>
             }
             
         </div>

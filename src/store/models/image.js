@@ -14,8 +14,8 @@ export const image = {
             objectUrl: null,            
         },
         settings: {
-            maxWidth: 200,
-            maxHeight: 200,
+            maxWidth: 100,
+            maxHeight: 100,
         }
     },
     reducers: {
@@ -41,16 +41,19 @@ export const image = {
                 image: image,
                 objectUrl: objectUrl
             }
+
             dispatch.image.setOriginalImage(payloadOriginal);
         },
         async processUserImage(payload, rootState) {   
-            console.log('processUserImage',payload, rootState);
             let image = rootState.image.original.image;
-            let data = getImageDataFromImage(image, 10, 10);
+            let settings = rootState.image.settings;
+            let data = getImageDataFromImage(image, settings.maxWidth, settings.maxHeight);
+
             let payloadCopy = {
                 imageData: data.imageData,
                 objectUrl: data.objectUrl                
             }
+
             dispatch.image.setCopyImage(payloadCopy);
         },
     })

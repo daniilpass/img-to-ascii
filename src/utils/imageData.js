@@ -12,16 +12,32 @@ export const createImageFromObjectUrl = (url) => {
     });
 }
 
-export const getImageDataFromImage = (image, width, height) => {
-    let canvas = document.createElement('canvas');
-    canvas.width = width || image.naturalWidth;
-    canvas.height = height || image.naturalHeight;
+export const getImageDataFromImage = (image, maxWidth, maxHeight) => {
+    // calc scale
+    let imageWidth = image.naturalWidth;
+    let imageHeight = image.naturalHeight;
+    let scaleX = maxWidth / imageWidth;
+    let scaleY = maxHeight / imageHeight;
+    let scale = scaleX < scaleY ? scaleX : scaleY;
 
+    // calc new width and height
+    let newWidth = Math.round(imageWidth * scale);
+    let newHeight = Math.round(imageHeight * scale);
+    // console.log("SCALE", {scale, scaleX, scaleY, newWidth, newHeight});
+
+    // setup canvas
+    let canvas = document.createElement('canvas');
+    canvas.width = newWidth;
+    canvas.height = newHeight;
+
+    // draw image with scaling on canvas
     let context = canvas.getContext('2d');     
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
     
+    // get data
     let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     let objectUrl = canvas.toDataURL();
+
     return {
         imageData,
         objectUrl
