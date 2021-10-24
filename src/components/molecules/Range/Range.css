@@ -1,0 +1,11 @@
+.range input {
+    vertical-align: middle;
+}
+
+.range__range-input {
+    width: 70%;
+}
+
+.range__number-input {
+    width: 30%;
+}

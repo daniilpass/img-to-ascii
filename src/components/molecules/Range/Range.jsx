@@ -9,7 +9,7 @@ export function Range(props) {
         min = 0,
         max = 10,
         step = 1,
-        list
+        list,
     } = props;
 
     const [value, setValue] = useState(initValue);
@@ -27,8 +27,9 @@ export function Range(props) {
     }
 
     return (
-        <div>
-            <Input 
+        <div className="range">
+            <Input
+                className="range__range-input" 
                 type="range"
                 value={value}
                 list={list}
@@ -38,6 +39,7 @@ export function Range(props) {
                 onChange={handleOnChange}
             />
             <Input
+                className="range__number-input" 
                 type="number"
                 value={value}
                 min={min}

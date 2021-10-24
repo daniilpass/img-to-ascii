@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 import Image from "../../atoms/Image";
+import Label from "../../atoms/Label";
 import FileSelect from "../../molecules/FileSelect";
 import Range from "../../molecules/Range";
 import NoPhoto from "../../../assets/images/no-photo.png";
@@ -35,12 +36,17 @@ export function ImageProcessor(props) {
     return (
         <div className="image-proc">
             <div className="file-wrapper">
-                <FileSelect
-                    buttonTitle="Select file"
-                    onChange={handleFileChange}
-                    accept="image/jpg, image/jpeg, image/png" 
-                />
-                <Range min="1" max="512" initValue="200" onChange={handleMaxWidthHeightChange} />
+                <Label text="Upload image">
+                    <FileSelect
+                        buttonTitle="Select file"
+                        onChange={handleFileChange}
+                        accept="image/jpg, image/jpeg, image/png" 
+                    />
+                </Label>
+
+                <Label text="Max width/height">
+                    <Range label="Max width/height" min="1" max="512" initValue="200" onChange={handleMaxWidthHeightChange} />
+                </Label>                
             </div>
             <div className="image-wrapper">
                 <Image alt="original" src={userImage.original.objectUrl} fallback={NoPhoto} />
