@@ -2,16 +2,19 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import { imageToAscii } from "../../../utils";
-
 import Image from "../../atoms/Image";
 import FileSelect from "../../molecules/FileSelect";
+import Range from "../../molecules/Range";
 import NoPhoto from "../../../assets/images/no-photo.png";
 
 import "./ImageProcessor.css";
 export function ImageProcessor(props) {    
     const dispatch = useDispatch();
-    const userImage = useSelector(state => state.image);
+    const userImage = useSelector(state => state.image); 
+
+    useEffect(() => {
+        dispatch.image.asyncProcessUserImage();
+    }, [userImage.settings]);
 
     const handleFileChange = (e) => {
         let file = e.target.files[0];
@@ -19,19 +22,15 @@ export function ImageProcessor(props) {
             return;
         }
 
-        dispatch.image.loadUserImage(file)
-            .then(() => {
-                dispatch.image.processUserImage()
-            });
+        dispatch.image.asyncLoadUserImage(file);            
     }
 
-    useEffect(() => {
-        if (!userImage.copy.imageData)
-            return;
-
-        let text = imageToAscii(userImage.copy.imageData);
-        dispatch.text.setText(text);
-    }, [userImage.copy]);
+    const handleMaxWidthHeightChange = (value) => {
+        dispatch.image.setMaxSize({
+            width:value, 
+            height: value
+        })
+    }
 
     return (
         <div className="image-proc">
@@ -41,6 +40,7 @@ export function ImageProcessor(props) {
                     onChange={handleFileChange}
                     accept="image/jpg, image/jpeg, image/png" 
                 />
+                <Range min="1" max="512" initValue="200" onChange={handleMaxWidthHeightChange} />
             </div>
             <div className="image-wrapper">
                 <Image alt="original" src={userImage.original.objectUrl} fallback={NoPhoto} />

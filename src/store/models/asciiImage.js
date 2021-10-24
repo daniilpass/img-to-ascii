@@ -1,4 +1,4 @@
-export const text = {
+export const asciiImage = {
     state: {
         raw: null,
         html: null

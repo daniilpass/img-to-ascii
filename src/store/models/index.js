@@ -1,6 +1,6 @@
 import { image } from "./image";
-import { text } from "./text";
+import { asciiImage } from "./asciiImage";
 export { 
     image,
-    text
+    asciiImage
  };

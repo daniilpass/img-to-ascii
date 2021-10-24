@@ -34,10 +34,20 @@ export const image = {
                 ...state,
                 copy: payload
             }
-        }
+        },
+        setMaxSize: (state, {width, height}) => {
+            return {
+                ...state,
+                settings: {
+                    ...state.settings,
+                    maxWidth: width,
+                    maxHeight: height
+                }
+            }
+        },
     },
     effects: (dispatch) => ({
-        async loadUserImage(blob) {
+        async asyncLoadUserImage(blob) {
             let objectUrl = URL.createObjectURL(blob);
             let image = await createImageFromObjectUrl(objectUrl);
 
@@ -47,9 +57,14 @@ export const image = {
             }
 
             dispatch.image.setOriginalImage(payloadOriginal);
+            await dispatch.image.asyncProcessUserImage();
         },
-        async processUserImage(payload, rootState) {   
+        async asyncProcessUserImage(payload, rootState) {   
             let image = rootState.image.original.image;
+            if (!image) {
+                return;
+            }
+
             let settings = rootState.image.settings;
 
             let data = getImageDataFromImage(
