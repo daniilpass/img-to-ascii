@@ -21,8 +21,9 @@ export const getImageDataFromImage = (image, maxWidth, maxHeight, processors = [
     let scale = scaleX < scaleY ? scaleX : scaleY;
 
     // calc new width and height
-    let newWidth = Math.round(imageWidth * scale);
-    let newHeight = Math.round(imageHeight * scale);
+    const minWHValue = 1;
+    let newWidth = Math.max(Math.round(imageWidth * scale), minWHValue);
+    let newHeight = Math.max(Math.round(imageHeight * scale), minWHValue);
     // console.log("SCALE", {scale, scaleX, scaleY, newWidth, newHeight});
 
     // setup canvas
