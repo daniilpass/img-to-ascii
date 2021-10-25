@@ -12,7 +12,7 @@ export function PaletteView(props) {
             backgroundColor: `rgb(${color.r}, ${color.g}, ${color.b})`
         }
     }
-    console.log(colors);
+    
     return (
         <div className="palette-view">
             {

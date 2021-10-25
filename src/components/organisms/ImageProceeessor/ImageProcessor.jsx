@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import { imageProcessorParams, palettes } from "../../../settings";
+import { imageProcessorParams, asciiConverterParams, palettes } from "../../../settings";
 import Image from "../../atoms/Image";
 import Label from "../../atoms/Label";
 import Select from "../../atoms/Select";
@@ -18,7 +18,8 @@ import "./ImageProcessor.css";
 export function ImageProcessor(props) {    
     const dispatch = useDispatch();
     const userImage = useSelector(state => state.image); 
-
+    const asciiImage  = useSelector(state => state.asciiImage);
+    
     useEffect(() => {
         dispatch.image.asyncProcessUserImage();
     }, [userImage.settings]);
@@ -42,6 +43,10 @@ export function ImageProcessor(props) {
     const handlePaletteChange = (e) => {
         const value = e.target.value;
         dispatch.image.setPalette(value);
+    }
+
+    const handleFontSizeChange = (value) => {
+        dispatch.asciiImage.setFontSize(value);
     }
 
     const colorsCountOptions = palettes.map((item, index) => (
@@ -79,7 +84,15 @@ export function ImageProcessor(props) {
                     />
                     <PaletteView colors={palettes[userImage.settings.palette].colors}/>
                 </Label>
-                
+
+                <Label text="Font size">
+                    <Range
+                        min={asciiConverterParams.minFontSize}
+                        max={asciiConverterParams.maxFontSize}
+                        initValue={asciiImage.settings.fontSize}
+                        onChange={handleFontSizeChange}
+                    />
+                </Label>                
             </div>
             <div className="image-wrapper">
                 <Image alt="original" src={userImage.original.objectUrl} fallback={NoPhoto} />

@@ -24,7 +24,7 @@ export function AsciiImagePreview(props) {
         <div className="ascii-preview"> 
             {
                 !!asciiImage.html
-                ? <AsciiImage html={asciiImage.html} fontSize={8}/>
+                ? <AsciiImage html={asciiImage.html} fontSize={asciiImage.settings.fontSize}/>
                 : <></>
             }
         </div>

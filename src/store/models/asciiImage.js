@@ -1,7 +1,12 @@
+import { asciiConverterParams } from "../../settings";
+
 export const asciiImage = {
     state: {
         raw: null,
-        html: null
+        html: null,
+        settings: {
+            fontSize: asciiConverterParams.defaultFontSize
+        }
     },
     reducers: {
         setText: (state, payload) => {
@@ -17,6 +22,15 @@ export const asciiImage = {
                 ...state,
                 raw: raw,
                 html: html
+            };
+        },
+        setFontSize: (state, fontSize) => {
+            return {
+                ...state,
+                settings: {
+                    ...state.settings,
+                    fontSize: fontSize,
+                }
             };
         }
     }
