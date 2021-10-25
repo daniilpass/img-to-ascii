@@ -24,7 +24,14 @@ export function AsciiImagePreview(props) {
         <div className="ascii-preview"> 
             {
                 !!asciiImage.html
-                ? <AsciiImage html={asciiImage.html} fontSize={asciiImage.settings.fontSize}/>
+                ? <AsciiImage
+                    html={asciiImage.html}
+                    fontFamily={asciiImage.settings.fontFamily}
+                    fontSize={asciiImage.settings.fontSize}
+                    lineHeight={asciiImage.settings.lineHeight}
+                    color={asciiImage.settings.color}
+                    backgroundColor={asciiImage.settings.backgroundColor}
+                />
                 : <></>
             }
         </div>

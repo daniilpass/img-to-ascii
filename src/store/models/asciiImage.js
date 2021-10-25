@@ -5,7 +5,11 @@ export const asciiImage = {
         raw: null,
         html: null,
         settings: {
-            fontSize: asciiConverterParams.defaultFontSize
+            fontFamily: asciiConverterParams.defaultFontFamily,
+            fontSize: asciiConverterParams.defaultFontSize,
+            lineHeight: asciiConverterParams.defaultFontSize - 2,
+            color: asciiConverterParams.defaultColor,
+            backgroundColor: asciiConverterParams.defaultBackgroundColor
         }
     },
     reducers: {
@@ -30,6 +34,7 @@ export const asciiImage = {
                 settings: {
                     ...state.settings,
                     fontSize: fontSize,
+                    lineHeight: fontSize - 2
                 }
             };
         }

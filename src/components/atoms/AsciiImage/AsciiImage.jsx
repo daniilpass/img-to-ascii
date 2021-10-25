@@ -4,12 +4,19 @@ import "./AsciiImage.css";
 export function AsciiImage (props) {
     const {
         html = "",
-        fontSize = 8
+        fontFamily,
+        fontSize = 8,  
+        lineHeight = 6,      
+        color = "#000000",
+        backgroundColor = "#ffffff"
     } = props;
-
+        
     const style = {
+        fontFamily: fontFamily,
         fontSize: fontSize + "px",
-        lineHeight: (fontSize - 2) + "px"
+        lineHeight: lineHeight + "px",
+        color: color,
+        backgroundColor: backgroundColor
     }
 
     return (

@@ -1,14 +1,8 @@
-import { 
-    createImageFromObjectUrl,
-    getImageDataFromImage
-} from "./imageData";
-
+import { createImageFromObjectUrl, getImageDataFromImage } from "./imageData";
 import { imageToAscii } from "./imageToAscii";
-import {
-    quantizeImageData,
-    quantizeImageDataByPalette
-} from "./quantizeImageData";
+import { quantizeImageData, quantizeImageDataByPalette } from "./quantizeImageData";
 import { downloadBlob } from "./downloadBlob";
+import { generateAsciiHtmlPage } from "./export";
 
 export { 
     createImageFromObjectUrl,
@@ -16,5 +10,6 @@ export {
     quantizeImageData,
     quantizeImageDataByPalette,
     imageToAscii,
-    downloadBlob
+    downloadBlob,
+    generateAsciiHtmlPage
 };
