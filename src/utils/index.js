@@ -7,12 +7,14 @@ import { imageToAscii } from "./imageToAscii";
 import {
     quantizeImageData,
     quantizeImageDataByPalette
- } from "./quantizeImageData";
+} from "./quantizeImageData";
+import { downloadBlob } from "./downloadBlob";
 
 export { 
     createImageFromObjectUrl,
     getImageDataFromImage,
     quantizeImageData,
     quantizeImageDataByPalette,
-    imageToAscii
+    imageToAscii,
+    downloadBlob
 };

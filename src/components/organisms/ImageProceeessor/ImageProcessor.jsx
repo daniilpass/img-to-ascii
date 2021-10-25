@@ -30,7 +30,10 @@ export function ImageProcessor(props) {
             return;
         }
 
-        dispatch.image.asyncLoadUserImage(file);            
+        dispatch.image.asyncLoadUserImage({
+            file: file, 
+            fileName:(file.name || imageProcessorParams.defaultFileName)
+        });            
     }
 
     const handleMaxWidthHeightChange = (value) => {

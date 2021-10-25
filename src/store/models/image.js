@@ -10,10 +10,11 @@ import {
 } from "../../utils";
 
 export const image = {
-    state: {
+    state: {    
         original: {
             image: null,
-            objectUrl: null,
+            objectUrl: null,                
+            fileName: null,
         },
         copy: {
             imageData: null,
@@ -59,13 +60,14 @@ export const image = {
         }
     },
     effects: (dispatch) => ({
-        async asyncLoadUserImage(blob) {
-            let objectUrl = URL.createObjectURL(blob);
+        async asyncLoadUserImage({file, fileName}) { 
+            let objectUrl = URL.createObjectURL(file);
             let image = await createImageFromObjectUrl(objectUrl);
 
             let payloadOriginal = {
                 image: image,
-                objectUrl: objectUrl
+                objectUrl: objectUrl,
+                fileName: fileName
             }
 
             dispatch.image.setOriginalImage(payloadOriginal);
