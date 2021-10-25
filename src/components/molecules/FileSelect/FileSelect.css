@@ -1,3 +1,8 @@
 .file-select input {
     display: none;
 }
+
+.file-select .button:not(:disabled) {
+    background-color: var(--color-accent-1);
+    color: var(--text-color-second);
+}

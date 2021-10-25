@@ -1,17 +1,22 @@
-
 .image-proc {
-    padding: 12px;
+    padding: var(--safe-sapce-large);
     white-space: nowrap;
 }
 
-.image-proc label{
-    margin-top: 4px;
-    white-space: normal;
+.image-proc .processing-settings .label{
+     margin-top: var(--safe-sapce-large);
 }
+.image-proc .processing-settings .label:first-child {
+    margin-top: 0;
+}
+.image-proc .processing-settings .label label{
+   white-space: normal
+}
+
 
 .image-proc .palette-view{
     white-space: normal;
-    margin-top: 4px;
+    margin-top: var(--safe-sapce-min);
 }
 
 .image-proc .image-wrapper {
@@ -19,7 +24,7 @@
     position: relative;
     width: 256px;
     height: 256px;
-    margin: 12px;
+    margin: var(--safe-sapce-large);
     vertical-align: top;
 }
 
@@ -37,15 +42,15 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 
 .image-proc .processing-settings {
     display: inline-block;
     width: 256px;
-    height: 256px;
-    margin: 12px;
+    /* height: 256px; */
+    margin: var(--safe-sapce-large);
 }
 
 .processing-settings button{

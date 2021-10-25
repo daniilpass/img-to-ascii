@@ -1,7 +1,17 @@
-body {    
-  background-color: #eaedf1;
-  font-family: Consolas, monaco, monospace;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0;  
+:root {  
+  --color-layer-1: #eaedf2;
+  --color-layer-2: #394166; 
+  --color-accent-0: #9fa7b4;  
+  --color-accent-1: #1fbba6;
+  --color-accent-2: #14b9d6;
+  --color-accent-3: #f17835; 
+  --font-size-default: 16px;
+  --font-family: Consolas, monaco, monospace;
+  --text-color-main: #323a45;
+  --text-color-second: #eaedf2;
+  --safe-sapce-min: 4px;
+  --safe-sapce-med: 8px;
+  --safe-sapce-large: 12px;
+  --border-radius: 4px;
+  --box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
 }

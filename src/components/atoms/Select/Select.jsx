@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./Select.css";
+
 export function Select(props) {
     const {
         options = [],
@@ -9,6 +11,7 @@ export function Select(props) {
 
     return (
         <select
+            className="select"
             defaultValue={defaultValue}
             onChange={onChange}
         >

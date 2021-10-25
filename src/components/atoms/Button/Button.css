@@ -1,7 +1,16 @@
 .button {
+    font-size: var(--font-size-default);
+    color: var(--text-color-main);
     cursor: pointer;
+    border-radius: var(--border-radius);
+    border: none;
+    box-shadow: var(--box-shadow);
+    padding: var(--safe-sapce-med);
+    font-weight: bold;
 }
 
 .button:disabled {
     cursor: default;
+    box-shadow: none;    
+    background-color: var(--color-accent-0);
 }
