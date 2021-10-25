@@ -8,6 +8,11 @@
     white-space: normal;
 }
 
+.image-proc .palette-view{
+    white-space: normal;
+    margin-top: 4px;
+}
+
 .image-proc .image-wrapper {
     display: inline-block;
     position: relative;

@@ -1,0 +1,9 @@
+.palette-view {
+    line-height: 0;
+}
+
+.palette-view__color {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}

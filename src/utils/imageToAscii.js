@@ -15,7 +15,6 @@ export const imageToAscii = (imageData, paletteColors) => {
         let asciiColor = paletteColors.find(x => x.r === redValue && x.g === greenValue && x.b === blueValue);
         text += asciiColor && asciiColor.char;
 
-        console.log();
         if (  i !== 0 && i % lineBreak === 0) {
             text += "\n";
         }

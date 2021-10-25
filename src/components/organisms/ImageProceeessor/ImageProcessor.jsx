@@ -7,10 +7,13 @@ import Image from "../../atoms/Image";
 import Label from "../../atoms/Label";
 import Select from "../../atoms/Select";
 import FileSelect from "../../molecules/FileSelect";
+import PaletteView from "../../atoms/PaletteView";
 import Range from "../../molecules/Range";
+
 import NoPhoto from "../../../assets/images/no-photo.png";
 
 import "./ImageProcessor.css";
+
 
 export function ImageProcessor(props) {    
     const dispatch = useDispatch();
@@ -68,13 +71,15 @@ export function ImageProcessor(props) {
                     />
                 </Label>
 
-                <Label text="Colors count">
+                <Label text="Palette">
                     <Select
                         options={colorsCountOptions}
                         defaultValue={userImage.settings.palette}
                         onChange={handlePaletteChange}
                     />
-                </Label> 
+                    <PaletteView colors={palettes[userImage.settings.palette].colors}/>
+                </Label>
+                
             </div>
             <div className="image-wrapper">
                 <Image alt="original" src={userImage.original.objectUrl} fallback={NoPhoto} />

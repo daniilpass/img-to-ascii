@@ -1,5 +1,5 @@
 export const palette2 = {
-    name: "2 colors",
+    name: "2-color palette",
     colors: [
         {
             "r": 0,

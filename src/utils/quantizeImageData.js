@@ -177,8 +177,8 @@ const splitToRanges = (parentLength, splitCount) => {
 
 /*
 const getAsciiPalette = () => {
-    var range = splitToRanges(256, 4);
-    var colors = range.map(x => x.value);
+    // var range = splitToRanges(256, 4);
+    var colors = [0, 85, 170, 255];
 
     // 64 ascii symbols
     var ascii = [];
@@ -192,9 +192,9 @@ const getAsciiPalette = () => {
         for (let k = 0; k < colors.length; k++) {
             for (let m = 0; m < colors.length; m++) {
                 pallete.push({
-                    r: range[i].value,
-                    g: range[k].value,
-                    b: range[m].value,
+                    r: colors[i],
+                    g: colors[k],
+                    b: colors[m],
                     char: ascii.pop()
                 });            
             }            
@@ -204,4 +204,5 @@ const getAsciiPalette = () => {
     console.log(JSON.stringify(pallete));
     console.log(pallete);
 }
+getAsciiPalette();
 */
