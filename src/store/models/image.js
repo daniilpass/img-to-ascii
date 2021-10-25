@@ -1,7 +1,12 @@
+import {
+    palettes,
+    imageProcessorParams,
+ } from "../../settings";
+
 import { 
     createImageFromObjectUrl, 
     getImageDataFromImage,
-    quantizeImageData
+    quantizeImageDataByPalette
 } from "../../utils";
 
 export const image = {
@@ -15,11 +20,9 @@ export const image = {
             objectUrl: null,            
         },
         settings: {
-            maxWidth: 256,
-            maxHeight: 256,
-            redColorsCount: 4,
-            greenColorsCount: 4,
-            blueColorsCount: 4,
+            maxWidth: imageProcessorParams.defaultImageMaxWidth,
+            maxHeight: imageProcessorParams.defaultImageMaxWidth,
+            palette: imageProcessorParams.defaultPalette
         }
     },
     reducers: {
@@ -45,6 +48,15 @@ export const image = {
                 }
             }
         },
+        setPalette: (state, paletteIndex) => {
+            return {
+                ...state,
+                settings: {
+                    ...state.settings,
+                    palette: paletteIndex
+                }
+            }
+        }
     },
     effects: (dispatch) => ({
         async asyncLoadUserImage(blob) {
@@ -72,11 +84,9 @@ export const image = {
                 settings.maxWidth, 
                 settings.maxHeight, 
                 [
-                    (imageData) => quantizeImageData(
+                    (imageData) => quantizeImageDataByPalette(
                         imageData, 
-                        settings.redColorsCount, 
-                        settings.greenColorsCount, 
-                        settings.blueColorsCount
+                        palettes[settings.palette].colors
                     )                        
                 ]
             );

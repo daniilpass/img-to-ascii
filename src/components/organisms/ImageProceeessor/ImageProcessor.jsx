@@ -2,13 +2,16 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
+import { imageProcessorParams, palettes } from "../../../settings";
 import Image from "../../atoms/Image";
 import Label from "../../atoms/Label";
+import Select from "../../atoms/Select";
 import FileSelect from "../../molecules/FileSelect";
 import Range from "../../molecules/Range";
 import NoPhoto from "../../../assets/images/no-photo.png";
 
 import "./ImageProcessor.css";
+
 export function ImageProcessor(props) {    
     const dispatch = useDispatch();
     const userImage = useSelector(state => state.image); 
@@ -33,9 +36,21 @@ export function ImageProcessor(props) {
         })
     }
 
+    const handlePaletteChange = (e) => {
+        const value = e.target.value;
+        dispatch.image.setPalette(value);
+    }
+
+    const colorsCountOptions = palettes.map((item, index) => (
+        {
+            value: index,
+            title: item.name
+        }
+    ));
+
     return (
         <div className="image-proc">
-            <div className="file-wrapper">
+            <div className="processing-settings">
                 <Label text="Upload image">
                     <FileSelect
                         buttonTitle="Select file"
@@ -45,8 +60,21 @@ export function ImageProcessor(props) {
                 </Label>
 
                 <Label text="Max width/height">
-                    <Range label="Max width/height" min="1" max="512" initValue="200" onChange={handleMaxWidthHeightChange} />
-                </Label>                
+                    <Range
+                        min={imageProcessorParams.processedImageMinWidth}
+                        max={imageProcessorParams.processedImageMaxWidth}
+                        initValue={userImage.settings.maxWidth}
+                        onChange={handleMaxWidthHeightChange}
+                    />
+                </Label>
+
+                <Label text="Colors count">
+                    <Select
+                        options={colorsCountOptions}
+                        defaultValue={userImage.settings.palette}
+                        onChange={handlePaletteChange}
+                    />
+                </Label> 
             </div>
             <div className="image-wrapper">
                 <Image alt="original" src={userImage.original.objectUrl} fallback={NoPhoto} />

@@ -4,6 +4,10 @@
     white-space: nowrap;
 }
 
+.image-proc label{
+    white-space: normal;
+}
+
 .image-proc .image-wrapper {
     display: inline-block;
     position: relative;
@@ -31,13 +35,17 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.image-proc .file-wrapper {
+.image-proc .processing-settings {
     display: inline-block;
     width: 256px;
     height: 256px;
     margin: 12px;
 }
 
-.image-proc .file-select button{
+.processing-settings button{
+    width: 100%;
+}
+
+.processing-settings select{
     width: 100%;
 }

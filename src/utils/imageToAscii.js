@@ -1,6 +1,4 @@
-import { palette444 } from "../settings/asciiPalette";
-
-export const imageToAscii = (imageData) => {
+export const imageToAscii = (imageData, paletteColors) => {
     const bytesPerPixel = 4;
     const imageWidth = imageData.width;
     const lineBreak = imageWidth * bytesPerPixel;
@@ -14,7 +12,7 @@ export const imageToAscii = (imageData) => {
         // BLUE
         let blueValue = imageData.data[i + 2];
         
-        let asciiColor = palette444.find(x => x.r === redValue && x.g === greenValue && x.b === blueValue);
+        let asciiColor = paletteColors.find(x => x.r === redValue && x.g === greenValue && x.b === blueValue);
         text += asciiColor && asciiColor.char;
 
         console.log();

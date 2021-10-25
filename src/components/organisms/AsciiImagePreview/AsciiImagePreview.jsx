@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { palettes } from "../../../settings";
 
 import { imageToAscii } from "../../../utils";
 import AsciiImage from "../../atoms/AsciiImage";
@@ -14,7 +15,8 @@ export function AsciiImagePreview(props) {
         if (!userImage.copy.imageData)
             return;
 
-        let text = imageToAscii(userImage.copy.imageData);
+        const paletteColors = palettes[userImage.settings.palette].colors;
+        let text = imageToAscii(userImage.copy.imageData, paletteColors);
         dispatch.asciiImage.setText(text);
     }, [userImage.copy]);
 

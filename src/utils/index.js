@@ -4,11 +4,15 @@ import {
 } from "./imageData";
 
 import { imageToAscii } from "./imageToAscii";
-import { quantizeImageData } from "./quantizeImageData";
+import {
+    quantizeImageData,
+    quantizeImageDataByPalette
+ } from "./quantizeImageData";
 
 export { 
     createImageFromObjectUrl,
     getImageDataFromImage,
     quantizeImageData,
+    quantizeImageDataByPalette,
     imageToAscii
 };

@@ -45,6 +45,117 @@ export const quantizeImageData = (imageData, redColorsCount = 256, greenColorsCo
     }
 }
 
+export const quantizeImageDataByPalette = (imageData, paletteColors) => {
+    // Pixel color data stores in 4 bytes.
+    const bytesPerPixel = 4; 
+
+    // preformance log
+    //console.log(`quantizeImageData start. PaletteLength: ${paletteColors.length}; pixelsCount: ${imageData.data.length / 4}`);
+    let startTime = performance.now();  
+    
+    const useCahce = true;
+    let cache = [];
+
+    // Iterate image data and process all pixels
+    for (let di = 0; di < imageData.data.length; di += bytesPerPixel) 
+    {
+        // Remove Alpha channel
+        if (imageData.data[di + 3] < 255) {
+            //TODO: apply background color insted of tuning to white
+            imageData.data[di + 0] = 255;
+            imageData.data[di + 1] = 255;
+            imageData.data[di + 2] = 255;
+            imageData.data[di + 3] = 255; 
+        }  
+
+        // get RGB color data 
+        let r = imageData.data[di + 0];
+        let g = imageData.data[di + 1];
+        let b = imageData.data[di + 2];
+
+        let closestColorIndex = -1;        
+
+        // try find in cahce
+        let cacheRed =  useCahce ? cache[r] : undefined;
+        let cacheGreen
+        let cacheBlue;
+        if (cacheRed !== undefined) {
+            cacheGreen = cacheRed.childs[g];
+            if (cacheGreen !== undefined) {
+                cacheBlue = cacheGreen.childs[b];
+                if (cacheBlue !== undefined) {
+                    closestColorIndex = cacheBlue.closestColorIndex;
+                }
+            }
+        }
+
+        if (closestColorIndex === -1)  {
+            //find closest color in palette
+            let minDistance = Number.MAX_SAFE_INTEGER;
+            for (let pi = 0; pi < paletteColors.length; pi++) 
+            {
+                // Get RGB color from palette
+                const paletteColor = paletteColors[pi];
+                let pr = paletteColor.r;
+                let pg = paletteColor.g;
+                let pb = paletteColor.b;
+                
+                // Get distance between image pixel and palette color
+                let distance = Math.sqrt(Math.pow(r - pr, 2) + Math.pow(g - pg, 2) + Math.pow(b - pb, 2))
+                // Save color with minimal distance
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestColorIndex = pi;
+                }
+            }
+
+            if (useCahce) {
+                if (cacheGreen !== undefined) {
+                    cacheGreen.childs[b] = {
+                        value: b,
+                        closestColorIndex: closestColorIndex
+                    };
+                } else if (cacheRed !== undefined) {
+                    cacheRed.childs[g] = {
+                        value: g,
+                        childs: [
+                            {
+                                value: b,
+                                closestColorIndex: closestColorIndex
+                            }
+                        ]
+                    }
+                } else {
+                    cache[r] = {
+                        value: r,
+                        childs: [
+                            {
+                                value: g,
+                                childs: [
+                                    {
+                                        value: b,
+                                        closestColorIndex: closestColorIndex
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+        
+        // update imageData to new color
+        const closestColor = paletteColors[closestColorIndex];
+        imageData.data[di + 0] = closestColor.r;
+        imageData.data[di + 1] = closestColor.g;
+        imageData.data[di + 2]= closestColor.b;              
+    }
+
+    // preformance log
+    let endTime = performance.now();
+    console.log(`quantizeImageData end. Time: ${endTime - startTime} ms;`);
+}
+
 const splitToRanges = (parentLength, splitCount) => {
     const rangeWidth = Math.ceil(parentLength / splitCount);
     const ranges = [];
