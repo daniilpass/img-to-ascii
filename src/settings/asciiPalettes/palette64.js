@@ -5,7 +5,7 @@ export const palette64 ={
             "r": 0,
             "g": 0,
             "b": 0,
-            "char": "_"
+            "char": "X"
         },
         {
             "r": 0,
@@ -35,19 +35,19 @@ export const palette64 ={
             "r": 0,
             "g": 85,
             "b": 85,
-            "char": "Z"
+            "char": "_"
         },
         {
             "r": 0,
             "g": 85,
             "b": 170,
-            "char": "Y"
+            "char": "Z"
         },
         {
             "r": 0,
             "g": 85,
             "b": 255,
-            "char": "X"
+            "char": "Y"
         },
         {
             "r": 0,

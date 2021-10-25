@@ -5,7 +5,7 @@ export const palette16 ={
             "r": 0,
             "g": 0,
             "b": 0,
-            "char": "_"
+            "char": "X"
         },
         {
             "r": 128,
@@ -35,19 +35,19 @@ export const palette16 ={
             "r": 128,
             "g": 0,
             "b": 128,
-            "char": "Z"
+            "char": "_"
         },
         {
             "r": 0,
             "g": 128,
             "b": 128,
-            "char": "Y"
+            "char": "Z"
         },
         {
             "r": 192,
             "g": 192,
             "b": 192,
-            "char": "X"
+            "char": "Y"
         },
         {
             "r": 128,

@@ -5,7 +5,7 @@ export const palette64alt ={
             "r": 32,
             "g": 32,
             "b": 32,
-            "char": "_"
+            "char": "X"
         },
         {
             "r": 32,
@@ -35,19 +35,19 @@ export const palette64alt ={
             "r": 32,
             "g": 96,
             "b": 96,
-            "char": "Z"
+            "char": "_"
         },
         {
             "r": 32,
             "g": 96,
             "b": 160,
-            "char": "Y"
+            "char": "Z"
         },
         {
             "r": 32,
             "g": 96,
             "b": 224,
-            "char": "X"
+            "char": "Y"
         },
         {
             "r": 32,
