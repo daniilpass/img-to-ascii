@@ -153,7 +153,7 @@ export const quantizeImageDataByPalette = (imageData, paletteColors) => {
 
     // preformance log
     let endTime = performance.now();
-    console.log(`quantizeImageData end. Time: ${endTime - startTime} ms;`);
+    //console.log(`quantizeImageData end. Time: ${endTime - startTime} ms;`);
 }
 
 const splitToRanges = (parentLength, splitCount) => {

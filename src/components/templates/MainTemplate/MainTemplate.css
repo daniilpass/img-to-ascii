@@ -1,6 +1,6 @@
 .main-template {
     display: flex;
     flex-direction: column;
+    /* flex-wrap: wrap; */
     align-items: center;
-    padding: var(--safe-sapce-large);
 }
