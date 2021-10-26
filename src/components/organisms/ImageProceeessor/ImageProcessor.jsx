@@ -9,11 +9,10 @@ import Select from "../../atoms/Select";
 import FileSelect from "../../molecules/FileSelect";
 import PaletteView from "../../atoms/PaletteView";
 import Range from "../../molecules/Range";
-
+import CreatedBy from "../../molecules/CreatedBy";
 import NoPhoto from "../../../assets/images/no-photo.png";
 
 import "./ImageProcessor.css";
-
 
 export function ImageProcessor(props) {    
     const dispatch = useDispatch();
@@ -95,7 +94,9 @@ export function ImageProcessor(props) {
                         initValue={asciiImage.settings.fontSize}
                         onChange={handleFontSizeChange}
                     />
-                </Label>                
+                </Label>   
+        
+                <CreatedBy />         
             </div>
             <div className="image-wrapper">
                 <Image alt="original" src={userImage.original.objectUrl} fallback={NoPhoto} />

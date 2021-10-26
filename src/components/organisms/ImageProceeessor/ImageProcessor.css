@@ -60,3 +60,8 @@
 .processing-settings select{
     width: 100%;
 }
+
+.processing-settings .created-by{
+    text-align: center;
+    margin-top: var(--safe-sapce-large);
+}
