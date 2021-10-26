@@ -29,11 +29,13 @@ export function ActionBar(props) {
                 title="Save as *.txt"
                 onClick={handleSaveAsTxtClick}
                 disabled={!asciiImage.raw}
+                type="primary"
             />
             <Button
                 title="Save as *.html"
                 onClick={handleSaveAsHtmlClick}
                 disabled={!asciiImage.html}
+                type="primary"
             />
         </div>
     )

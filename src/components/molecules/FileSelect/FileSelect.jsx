@@ -19,7 +19,10 @@ export function FileSelect({buttonTitle, onChange, accept}){
                     onChange={onChange}
                     accept={accept}
                 />
-                <Button title={buttonTitle} />
+                <Button
+                    title={buttonTitle}
+                    type="agree"
+                />
             </label>
         </div>
         

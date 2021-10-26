@@ -2,7 +2,7 @@ body {
   background-color: var(--color-layer-1);
   font-family: var(--font-family);
   font-size: var(--font-size-default); 
-  color: var(--text-color-main); 
+  color: var(--color-dark); 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;  

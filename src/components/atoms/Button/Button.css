@@ -1,6 +1,5 @@
 .button {
     font-size: var(--font-size-default);
-    color: var(--text-color-main);
     cursor: pointer;
     border-radius: var(--border-radius);
     border: none;
@@ -13,4 +12,30 @@
     cursor: default;
     box-shadow: none;    
     background-color: var(--color-accent-0);
+}
+
+.button:hover:not(:disabled) {    
+    --box-shadow-size: 0px 2px 2px;
+    box-shadow: var(--box-shadow-color) var(--box-shadow-size); 
+}
+
+.button--default {    
+    color: var(--color-dark);
+    background-color: var(--color-light);
+}
+
+
+.button--agree {
+    color: var(--color-light);
+    background-color: var(--color-accent-1);
+}
+
+.button--primary {
+    color: var(--color-light);
+    background-color: var(--color-accent-2);
+}
+
+.button--warning {
+    color: var(--color-light);
+    background-color: var(--color-accent-3);
 }

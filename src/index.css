@@ -1,17 +1,18 @@
 :root {  
+  --color-dark: #323a45;
+  --color-light: #f1f1f1;
   --color-layer-1: #eaedf2;
-  --color-layer-2: #394166; 
   --color-accent-0: #9fa7b4;  
   --color-accent-1: #1fbba6;
   --color-accent-2: #14b9d6;
   --color-accent-3: #f17835; 
   --font-size-default: 16px;
-  --font-family: Consolas, monaco, monospace;
-  --text-color-main: #323a45;
-  --text-color-second: #eaedf2;
+  --font-family: Consolas, monaco, monospace;  
   --safe-sapce-min: 4px;
   --safe-sapce-med: 8px;
   --safe-sapce-large: 12px;
   --border-radius: 4px;
-  --box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  --box-shadow-color: rgb(0 0 0 / 24%);
+  --box-shadow-size: 0px 3px 8px;
+  --box-shadow: var(--box-shadow-color) var(--box-shadow-size);  
 }

@@ -4,14 +4,8 @@
 
 .action-bar .button {
     margin-right: var(--safe-sapce-large);
-    color: var(--text-color-second);
 }
-
 .action-bar .button:last-child {
     margin-right: 0;
-}
-
-.action-bar .button:not(:disabled) {    
-    background-color: var(--color-accent-2);
 }
     
