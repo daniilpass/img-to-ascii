@@ -2,4 +2,4 @@
 Image to text converter
 
 # Link
-[https://ascii.daniilpass.dev/](https://ascii.daniilpass.dev/)
+[https://ascii.anydany.ru/](https://ascii.anydany.ru/)
